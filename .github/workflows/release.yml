@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     steps:
     - name: Checkout repository
@@ -65,7 +67,7 @@ jobs:
         generate_release_notes: true
 
     - name: Publish to npm registry
-      if: ${{ secrets.NPM_TOKEN != '' }}
+      if: env.NPM_TOKEN != ''
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
