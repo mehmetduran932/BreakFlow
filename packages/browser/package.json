@@ -1,6 +1,6 @@
 {
   "name": "@breakflow/browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser DOM layout measurement, sandbox cloning, DOM pagination, and debug overlay for BreakFlow.",
   "type": "module",
   "main": "./dist/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@breakflow/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI tool to analyze, lint, and render PDFs with BreakFlow intelligent pagination.",
   "type": "module",
   "main": "./dist/index.js",

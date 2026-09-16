@@ -1,6 +1,6 @@
 {
   "name": "@breakflow/playwright",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Playwright Chromium PDF adapter with BreakFlow intelligent pagination injection and diagnostics.",
   "type": "module",
   "main": "./dist/index.js",

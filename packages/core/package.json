@@ -1,6 +1,6 @@
 {
   "name": "@breakflow/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-independent core pagination engine, layout models, scoring, and diagnostics for BreakFlow.",
   "type": "module",
   "main": "./dist/index.js",
