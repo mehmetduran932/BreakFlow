@@ -63,57 +63,136 @@ yarn add @breakflow/core @breakflow/browser
 
 ---
 
-## Quick Start
+## Quick Start (Minimal Example)
 
-### 1. Browser Usage
+In just 3 lines of code, turn any HTML element into clean, perfectly paginated pages:
 
 ```typescript
 import { createPaginator } from '@breakflow/browser';
 
-const paginator = createPaginator({
-  page: {
-    format: 'A4',
-    margin: { top: '15mm', bottom: '15mm', left: '15mm', right: '15mm' }
-  },
-  smartDefaults: true,
-  table: {
-    repeatHeader: true,
-    preventRowSplit: true
-  }
-});
+const paginator = createPaginator({ page: { format: 'A4', margin: '15mm' } });
+const { element, pageCount } = await paginator.paginate('#invoice');
 
-// Analyze without altering the DOM
-const report = await paginator.analyze('#report');
-console.log(`Pages: ${report.pageCount}, Issues found: ${report.issues.length}`);
-
-// Paginate and receive clean print DOM
-const result = await paginator.paginate('#report', {
-  replaceOriginal: false,
-  injectStyles: true
-});
-
-document.body.appendChild(result.element);
+// `element` now contains structured, print-ready `.breakflow-page` elements!
+document.body.appendChild(element);
 ```
 
-### 2. Playwright PDF Generation
+---
 
+## 🔌 Integration with External PDF Libraries
+
+BreakFlow is **renderer-agnostic**. It is not a closed PDF generator; it is the **intelligent layout pre-processor** that solves pagination bugs *before* handoff to your favorite PDF library:
+
+```
+Your HTML ➔ [ BreakFlow: Measures, Avoids Orphan Headings, Repeats Tables ] ➔ External PDF Library / Print
+```
+
+### 1. Client-Side with `jsPDF`
+
+Native `jsPDF.html()` slices elements blindly in half when transitioning across page boundaries. BreakFlow prevents this by calculating physical page boundaries in advance.
+
+Set `autoPaging: false` so BreakFlow dictates the exact page cuts:
+
+```typescript
+import { jsPDF } from 'jspdf';
+import { createPaginator } from '@breakflow/browser';
+
+// 1. Paginate with BreakFlow (handles tables, cards, headers, and margins)
+const paginator = createPaginator({
+  page: { format: 'A4', margin: '15mm' },
+  smartDefaults: true,
+  table: { repeatHeader: true }
+});
+
+const { element } = await paginator.paginate('#invoice-container');
+
+// 2. Export cleanly with jsPDF
+const pdf = new jsPDF({ format: 'a4', unit: 'mm' });
+
+await pdf.html(element, {
+  callback: (doc) => doc.save('invoice.pdf'),
+  autoPaging: false // ⚠️ IMPORTANT: Disables jsPDF's naive slicing; BreakFlow controls the pages!
+});
+```
+
+### 2. Client-Side with `html2pdf.js`
+
+```typescript
+import html2pdf from 'html2pdf.js';
+import { createPaginator } from '@breakflow/browser';
+
+const paginator = createPaginator({ page: { format: 'A4', margin: '10mm' } });
+const { element } = await paginator.paginate('#report');
+
+html2pdf()
+  .from(element)
+  .set({
+    pagebreak: { mode: ['css', 'legacy'] }, // Respects BreakFlow's .breakflow-page breaks
+    jsPDF: { format: 'a4', unit: 'mm' }
+  })
+  .save('report.pdf');
+```
+
+### 3. Server-Side with Node.js & `Playwright` / `Puppeteer`
+
+#### Option A: Using `@breakflow/playwright` (All-in-one)
 ```typescript
 import { generatePdf } from '@breakflow/playwright';
 
 const { pdfBuffer, result } = await generatePdf({
-  url: 'http://localhost:3000/invoice/123',
-  selector: '#invoice',
-  output: './invoice.pdf',
-  page: {
-    format: 'A4',
-    margin: '15mm'
-  }
+  url: 'http://localhost:3000/report/42',
+  selector: '#report-content',
+  output: './report.pdf',
+  page: { format: 'A4', margin: '15mm' }
 });
-
-console.log(`Generated ${result.pageCount}-page PDF with ${result.fixes.length} fixes applied!`);
 ```
 
-### 3. Command Line Interface (CLI)
+#### Option B: Using Native `Puppeteer` or `Playwright`
+```typescript
+import { chromium } from 'playwright';
+
+const browser = await chromium.launch();
+const page = await browser.newPage();
+await page.goto('http://localhost:3000/statement');
+
+// 1. Run BreakFlow in the browser context
+await page.addScriptTag({ url: 'https://cdn.jsdelivr.net/npm/@breakflow/browser/dist/index.global.js' });
+await page.evaluate(async () => {
+  const paginator = window.BreakFlow.createPaginator({ page: { format: 'A4', margin: '15mm' } });
+  await paginator.paginate('#statement', { replaceOriginal: true, injectStyles: true });
+});
+
+// 2. Print with Chromium's native vector PDF engine (zero page-break defects!)
+await page.pdf({
+  path: 'statement.pdf',
+  format: 'A4',
+  printBackground: true,
+  margin: { top: 0, bottom: 0, left: 0, right: 0 } // Margins are already handled by BreakFlow
+});
+
+await browser.close();
+```
+
+### 4. Native Browser Print Dialog (`window.print()`)
+
+```typescript
+import { createPaginator } from '@breakflow/browser';
+
+const paginator = createPaginator({ page: { format: 'A4', margin: '15mm' } });
+
+// Replaces the element and injects CSS @page rules
+await paginator.paginate('#document-to-print', {
+  replaceOriginal: true,
+  injectStyles: true
+});
+
+// Open standard browser print / save as PDF dialog
+window.print();
+```
+
+---
+
+## 💻 Command Line Interface (CLI)
 
 ```bash
 # Analyze HTML document for pagination defects

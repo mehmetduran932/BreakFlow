@@ -87,8 +87,42 @@ const pdf = new jsPDF({ format: 'a4', unit: 'mm' });
 // Use autoPaging: false so BreakFlow controls exact physical page slices
 await pdf.html(element, {
   callback: (doc) => doc.save('document.pdf'),
-  autoPaging: false
+  autoPaging: false // ⚠️ IMPORTANT: Disables jsPDF's naive slicing; BreakFlow controls the pages!
 });
+```
+
+### Client-Side `html2pdf.js` Integration Example
+
+```typescript
+import html2pdf from 'html2pdf.js';
+import { createPaginator } from '@breakflow/browser';
+
+const paginator = createPaginator({ page: { format: 'A4', margin: '10mm' } });
+const { element } = await paginator.paginate('#printable-area');
+
+html2pdf()
+  .from(element)
+  .set({
+    pagebreak: { mode: ['css', 'legacy'] }, // Respects BreakFlow's .breakflow-page breaks
+    jsPDF: { format: 'a4', unit: 'mm' }
+  })
+  .save('document.pdf');
+```
+
+### Native Browser Print Dialog (`window.print()`)
+
+```typescript
+import { createPaginator } from '@breakflow/browser';
+
+const paginator = createPaginator({ page: { format: 'A4', margin: '15mm' } });
+
+// Replaces element in-place with print-optimized pages & injects @page CSS
+await paginator.paginate('#printable-area', {
+  replaceOriginal: true,
+  injectStyles: true
+});
+
+window.print();
 ```
 
 ---
