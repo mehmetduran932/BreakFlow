@@ -36,17 +36,23 @@ HTML / DOM ➔ Layout Measurement ➔ Intelligent Pagination ➔ Paginated DOM �
 ## Installation
 
 ```bash
-# Core framework-independent engine
-pnpm add @breakflow/core
+# npm (Standard Installation)
+npm install @breakflow/core @breakflow/browser
 
-# Browser DOM measurement & pagination
-pnpm add @breakflow/browser
+# For Playwright PDF Generation
+npm install -D @breakflow/playwright
 
-# Playwright Chromium PDF generation adapter
-pnpm add @breakflow/playwright
+# For Command Line Tools
+npm install -g @breakflow/cli
+```
 
-# Command line interface
-pnpm add -g @breakflow/cli
+Or using **pnpm** / **yarn**:
+```bash
+# pnpm
+pnpm add @breakflow/core @breakflow/browser
+
+# yarn
+yarn add @breakflow/core @breakflow/browser
 ```
 
 ---

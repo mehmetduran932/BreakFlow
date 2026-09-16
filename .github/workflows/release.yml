@@ -63,3 +63,11 @@ jobs:
           ./dist-packages/*.tgz
           ./breakflow-packages.tar.gz
         generate_release_notes: true
+
+    - name: Publish to npm registry
+      if: env.NPM_TOKEN != ''
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        pnpm -r publish --access public --no-git-checks

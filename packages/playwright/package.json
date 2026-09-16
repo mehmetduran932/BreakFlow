@@ -41,6 +41,18 @@
     "chromium",
     "print"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehmetduran932/BreakFlow.git",
+    "directory": "packages/playwright"
+  },
+  "bugs": {
+    "url": "https://github.com/mehmetduran932/BreakFlow/issues"
+  },
+  "homepage": "https://github.com/mehmetduran932/BreakFlow#readme",
   "author": "BreakFlow Contributors",
   "license": "MIT"
 }
