@@ -87,7 +87,77 @@ BreakFlow is **renderer-agnostic**. It is not a closed PDF generator; it is the 
 Your HTML ➔ [ BreakFlow: Measures, Avoids Orphan Headings, Repeats Tables ] ➔ External PDF Library / Print
 ```
 
-### 1. Client-Side with `jsPDF`
+### 1. Angular (22+) Component + `jsPDF` Integration
+
+BreakFlow runs in an isolated sandbox, meaning your **Angular Signals**, bindings, and components remain 100% untouched.
+
+```typescript
+import { Component, signal, viewChild, ElementRef } from '@angular/core';
+import { jsPDF } from 'jspdf';
+import { createPaginator } from '@breakflow/browser';
+
+@Component({
+  selector: 'app-invoice-print',
+  standalone: true,
+  template: `
+    <!-- Template to paginate -->
+    <div #printableArea class="invoice">
+      <h2>Invoice #{{ invoiceId() }}</h2>
+      <table data-breakflow="table">
+        <thead data-breakflow="repeat">
+          <tr><th>Service</th><th>Hours</th><th>Rate</th></tr>
+        </thead>
+        <tbody>
+          @for (item of items(); track item.id) {
+            <tr><td>{{ item.title }}</td><td>{{ item.hours }}</td><td>\${{ item.rate }}</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <button (click)="exportPdf()" [disabled]="isExporting()">
+      {{ isExporting() ? 'Generating PDF...' : 'Download PDF' }}
+    </button>
+  `
+})
+export class InvoicePrintComponent {
+  readonly invoiceId = signal('INV-2026-001');
+  readonly isExporting = signal(false);
+  readonly items = signal([
+    { id: '1', title: 'Architecture & System Design', hours: 40, rate: 150 },
+    { id: '2', title: 'BreakFlow Layout Integration', hours: 25, rate: 180 },
+    { id: '3', title: 'Automated Test Suite', hours: 20, rate: 140 }
+  ]);
+
+  // Query template reference
+  readonly printableRef = viewChild<ElementRef<HTMLElement>>('printableArea');
+
+  async exportPdf(): Promise<void> {
+    this.isExporting.set(true);
+
+    try {
+      // 1. Paginate with BreakFlow (safe clone in isolated sandbox)
+      const paginator = createPaginator({
+        page: { format: 'A4', margin: '15mm' },
+        table: { repeatHeader: true, preventRowSplit: true }
+      });
+
+      const { element } = await paginator.paginate(this.printableRef()!.nativeElement);
+
+      // 2. Export with jsPDF (disable jsPDF naive slicing)
+      const pdf = new jsPDF({ format: 'a4', unit: 'mm' });
+      await pdf.html(element, {
+        callback: (doc) => doc.save(`invoice-${this.invoiceId()}.pdf`),
+        autoPaging: false // ⚠️ IMPORTANT: BreakFlow controls the physical pages!
+      });
+    } finally {
+      this.isExporting.set(false);
+    }
+  }
+}
+```
+
+### 2. Client-Side with `jsPDF` (Vanilla / React / Vue)
 
 Native `jsPDF.html()` slices elements blindly in half when transitioning across page boundaries. BreakFlow prevents this by calculating physical page boundaries in advance.
 
