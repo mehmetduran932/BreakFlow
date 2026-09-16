@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>15 - Nested Keep Rules Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+    .spacer { height: 650px; background: #e2e8f0; padding: 20px; box-sizing: border-box; }
+    .outer-container {
+      background: #f8fafc;
+      border: 2px solid #3b82f6;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .inner-card {
+      background: white;
+      border: 1px solid #94a3b8;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 4px;
+      height: 180px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="spacer">
+      <h1>Dashboard Section</h1>
+      <p>Content filling 650px of the first page.</p>
+    </div>
+
+    <!-- Outer container marked keep, containing inner cards also marked keep -->
+    <div class="outer-container" id="parent-card" data-breakflow="keep">
+      <h2>Composite Feature Suite</h2>
+      <div class="inner-card" id="child-card-1" data-breakflow="keep">
+        <h3>Feature Alpha</h3>
+        <p>Telemetry, tracing, and metric collection modules.</p>
+      </div>
+      <div class="inner-card" id="child-card-2" data-breakflow="keep">
+        <h3>Feature Beta</h3>
+        <p>Automated canary deployment and rollback triggers.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

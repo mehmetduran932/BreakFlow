@@ -1,0 +1,44 @@
+{
+  "name": "@breakflow/cli",
+  "version": "0.1.0",
+  "description": "CLI tool to analyze, lint, and render PDFs with BreakFlow intelligent pagination.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "breakflow": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@breakflow/browser": "workspace:*",
+    "@breakflow/core": "workspace:*",
+    "@breakflow/playwright": "workspace:*",
+    "commander": "^13.1.0",
+    "picocolors": "^1.1.1",
+    "playwright": "^1.49.0"
+  },
+  "keywords": [
+    "cli",
+    "pagination",
+    "pdf",
+    "lint"
+  ],
+  "author": "BreakFlow Contributors",
+  "license": "MIT"
+}

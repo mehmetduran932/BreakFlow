@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>08 - Grid Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .grid-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 16px;
+      border-radius: 8px;
+      height: 250px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Project Metrics Grid</h1>
+    <div class="grid-container" id="grid-row-1" data-breakflow="keep">
+      <div class="grid-card"><h3>Metric A</h3><p>CPU Utilization: 42%</p></div>
+      <div class="grid-card"><h3>Metric B</h3><p>Memory Utilization: 68%</p></div>
+    </div>
+    <div class="grid-container" id="grid-row-2" data-breakflow="keep">
+      <div class="grid-card"><h3>Metric C</h3><p>Disk I/O: 120 MB/s</p></div>
+      <div class="grid-card"><h3>Metric D</h3><p>Network Throughput: 1.2 Gbps</p></div>
+    </div>
+    <div class="grid-container" id="grid-row-3" data-breakflow="keep">
+      <div class="grid-card"><h3>Metric E</h3><p>P99 Latency: 14ms</p></div>
+      <div class="grid-card"><h3>Metric F</h3><p>Error Rate: 0.001%</p></div>
+    </div>
+    <div class="grid-container" id="grid-row-4" data-breakflow="keep">
+      <div class="grid-card"><h3>Metric G</h3><p>Cache Hit Ratio: 98.4%</p></div>
+      <div class="grid-card"><h3>Metric H</h3><p>Active Connections: 14,200</p></div>
+    </div>
+  </div>
+</body>
+</html>

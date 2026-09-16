@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enterprise Services Invoice - CloudScale Solutions</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #0f172a;
+      background: white;
+    }
+    #invoice-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .brand-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    .company-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #2563eb;
+      letter-spacing: -0.02em;
+    }
+    .company-details {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+    .invoice-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: right;
+    }
+    .invoice-meta-table {
+      font-size: 13px;
+      margin-top: 6px;
+      text-align: right;
+    }
+    .parties-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 25px;
+      font-size: 13.5px;
+    }
+    .parties-grid strong {
+      color: #0f172a;
+      display: block;
+      margin-bottom: 4px;
+    }
+    table.line-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+    table.line-items th {
+      background: #0f172a;
+      color: white;
+      text-align: left;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    table.line-items td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 13px;
+    }
+    table.line-items tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .totals-wrapper {
+      width: 340px;
+      margin-left: auto;
+      margin-bottom: 30px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 16px 20px;
+    }
+    .totals-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      font-size: 13.5px;
+      color: #334155;
+    }
+    .totals-line.final {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      border-top: 2px solid #cbd5e1;
+      padding-top: 10px;
+      margin-top: 6px;
+    }
+    .payment-notice {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 15px;
+      font-size: 12px;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="invoice-container">
+    <div class="brand-bar" data-breakflow="keep">
+      <div>
+        <div class="company-title">CloudScale Systems, Inc.</div>
+        <div class="company-details">
+          500 Howard Street, Suite 800<br>
+          San Francisco, CA 94105<br>
+          accounting@cloudscale.example.com
+        </div>
+      </div>
+      <div>
+        <div class="invoice-title">INVOICE</div>
+        <div class="invoice-meta-table">
+          <div><strong>Invoice #:</strong> CS-2026-9041</div>
+          <div><strong>Date:</strong> October 15, 2026</div>
+          <div><strong>Due Date:</strong> November 14, 2026</div>
+          <div><strong>PO #:</strong> PO-884210</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parties-grid" data-breakflow="keep">
+      <div>
+        <strong>Billed To:</strong>
+        Nexus Dynamics Global Inc.<br>
+        Attn: Enterprise Procurement<br>
+        1200 Avenue of the Americas, 24th Fl.<br>
+        New York, NY 10036
+      </div>
+      <div>
+        <strong>Account Details:</strong>
+        Client ID: NX-99214<br>
+        Payment Terms: Net 30<br>
+        Billing Period: Sep 01 – Sep 30, 2026<br>
+        Currency: USD ($)
+      </div>
+    </div>
+
+    <!-- Long multi-page table demonstrating repeated <thead> -->
+    <table class="line-items" id="invoice-table" data-breakflow="table">
+      <thead data-breakflow="repeat">
+        <tr>
+          <th style="width: 12%;">Code</th>
+          <th style="width: 48%;">Service / Item Description</th>
+          <th style="width: 12%; text-align: center;">Qty</th>
+          <th style="width: 14%; text-align: right;">Rate</th>
+          <th style="width: 14%; text-align: right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SRV-01</td><td>Dedicated Production Kubernetes Node Pool (32 vCPU, 128 GB)</td><td style="text-align: center;">4</td><td style="text-align: right;">$850.00</td><td style="text-align: right;">$3,400.00</td></tr>
+        <tr><td>SRV-02</td><td>Multi-Region NVMe Distributed Storage (15 TB)</td><td style="text-align: center;">15</td><td style="text-align: right;">$90.00</td><td style="text-align: right;">$1,350.00</td></tr>
+        <tr><td>SRV-03</td><td>Global Anycast CDN Ingress &amp; Egress (80 TB)</td><td style="text-align: center;">80</td><td style="text-align: right;">$42.00</td><td style="text-align: right;">$3,360.00</td></tr>
+        <tr><td>SRV-04</td><td>High-Availability Distributed PostgreSQL Clustered Engine</td><td style="text-align: center;">2</td><td style="text-align: right;">$750.00</td><td style="text-align: right;">$1,500.00</td></tr>
+        <tr><td>SRV-05</td><td>Redis Distributed Cache Cluster (Cluster Mode Enabled)</td><td style="text-align: center;">3</td><td style="text-align: right;">$280.00</td><td style="text-align: right;">$840.00</td></tr>
+        <tr><td>SRV-06</td><td>Application Load Balancer with SSL Automated Offloading</td><td style="text-align: center;">4</td><td style="text-align: right;">$95.00</td><td style="text-align: right;">$380.00</td></tr>
+        <tr><td>SRV-07</td><td>Dedicated NAT Gateways (High Redundancy Across AZs)</td><td style="text-align: center;">3</td><td style="text-align: right;">$120.00</td><td style="text-align: right;">$360.00</td></tr>
+        <tr><td>SRV-08</td><td>Network Packet Inspection &amp; WAF Layer 7 Filtering</td><td style="text-align: center;">1</td><td style="text-align: right;">$1,250.00</td><td style="text-align: right;">$1,250.00</td></tr>
+        <tr><td>SRV-09</td><td>Enterprise Secret Key Rotation &amp; Cloud KMS HSM Tier</td><td style="text-align: center;">1</td><td style="text-align: right;">$450.00</td><td style="text-align: right;">$450.00</td></tr>
+        <tr><td>SRV-10</td><td>Automated Snapshot Archival &amp; Cross-Region Backup Sync</td><td style="text-align: center;">1</td><td style="text-align: right;">$350.00</td><td style="text-align: right;">$350.00</td></tr>
+        <tr><td>SRV-11</td><td>Continuous Vulnerability Assessment &amp; SBOM Auditing</td><td style="text-align: center;">1</td><td style="text-align: right;">$600.00</td><td style="text-align: right;">$600.00</td></tr>
+        <tr><td>SRV-12</td><td>Telemetry Event Streaming Pipeline (500M events/mo)</td><td style="text-align: center;">1</td><td style="text-align: right;">$1,100.00</td><td style="text-align: right;">$1,100.00</td></tr>
+        <tr><td>SRV-13</td><td>24/7/365 Dedicated Site Reliability Engineering Support</td><td style="text-align: center;">1</td><td style="text-align: right;">$2,500.00</td><td style="text-align: right;">$2,500.00</td></tr>
+        <tr><td>SRV-14</td><td>Quarterly Disaster Recovery Simulation and Failover Verification</td><td style="text-align: center;">1</td><td style="text-align: right;">$950.00</td><td style="text-align: right;">$950.00</td></tr>
+      </tbody>
+    </table>
+
+    <div class="totals-wrapper" data-breakflow="keep">
+      <div class="totals-line"><span>Subtotal:</span><span>$18,440.00</span></div>
+      <div class="totals-line"><span>Enterprise Volume Discount (5%):</span><span>-$922.00</span></div>
+      <div class="totals-line"><span>Tax (8.25%):</span><span>$1,445.24</span></div>
+      <div class="totals-line final"><span>Total Due:</span><span>$18,963.24</span></div>
+    </div>
+
+    <div class="payment-notice" data-breakflow="keep">
+      <p>
+        <strong>Payment Instructions:</strong> Wire or ACH transfer to JPMorgan Chase Bank.<br>
+        Routing Number: 021000021 | Account Number: 8492041284 | Swift Code: CHASUS33<br>
+        Please reference Invoice #CS-2026-9041 in wire transmission notes.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

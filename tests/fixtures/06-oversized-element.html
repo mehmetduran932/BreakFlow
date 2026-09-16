@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>06 - Oversized Element Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+    /* Giant card that is 1400px tall - larger than a full A4 page content height! */
+    .giant-card {
+      background: #f8fafc;
+      border: 2px solid #64748b;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .sub-section {
+      height: 320px;
+      margin-bottom: 20px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <!-- Marked with keepTogether, but 1400px tall!
+         BreakFlow must degrade keepTogether safely, paginate sub-sections,
+         emit oversized-element warning, and NEVER loop or create blank pages. -->
+    <div class="giant-card" id="oversized-card" data-breakflow="keep">
+      <h1>Comprehensive Audit Report (1400px tall)</h1>
+      <div class="sub-section" id="sec-1">
+        <h2>Section 1: Initial Discovery</h2>
+        <p>Comprehensive scan results covering cloud resources and IAM policies.</p>
+      </div>
+      <div class="sub-section" id="sec-2">
+        <h2>Section 2: Vulnerability Analysis</h2>
+        <p>In-depth vulnerability scoring across dependency graphs and build artifacts.</p>
+      </div>
+      <div class="sub-section" id="sec-3">
+        <h2>Section 3: Compliance Mapping</h2>
+        <p>Cross-verification against SOC2 Type II, ISO 27001, and HIPAA compliance controls.</p>
+      </div>
+      <div class="sub-section" id="sec-4">
+        <h2>Section 4: Remediation Playbook</h2>
+        <p>Automated remediation runbooks for platform engineering and SRE teams.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

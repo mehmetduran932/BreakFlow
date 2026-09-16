@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Image and Caption Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+    .spacer { height: 720px; background: #e2e8f0; padding: 20px; box-sizing: border-box; }
+    figure {
+      margin: 0;
+      padding: 15px;
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
+    .svg-diagram {
+      width: 100%;
+      height: 260px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    figcaption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #475569;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="spacer">
+      <h1>System Architecture Documentation</h1>
+      <p>Introductory context explaining data ingestion pathways.</p>
+    </div>
+
+    <!-- Figure + figcaption should stay together! If it doesn't fit on Page 1, both move to Page 2 -->
+    <figure id="architecture-figure">
+      <div class="svg-diagram">
+        <svg width="400" height="200" viewBox="0 0 400 200">
+          <rect width="400" height="200" fill="#3b82f6" rx="10"/>
+          <text x="200" y="105" fill="white" font-size="20" text-anchor="middle" font-family="sans-serif">Architecture Diagram</text>
+        </svg>
+      </div>
+      <figcaption id="architecture-caption">Figure 1.2: End-to-end data pipeline topology and message queue replication.</figcaption>
+    </figure>
+  </div>
+</body>
+</html>

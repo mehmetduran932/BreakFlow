@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Table Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .spacer {
+      height: 900px;
+      background: #e2e8f0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="spacer">
+      <h1>Financial Summary</h1>
+      <p>Introductory ledger section occupying top of page.</p>
+    </div>
+
+    <!-- Table with 5 rows. Doesn't fit in 250px on Page 1.
+         BreakFlow should move the intact table to Page 2! -->
+    <table id="financial-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>TX-101</td><td>Consulting Services</td><td>$4,500.00</td></tr>
+        <tr><td>TX-102</td><td>Infrastructure Hosting</td><td>$1,200.00</td></tr>
+        <tr><td>TX-103</td><td>Security Audit</td><td>$3,800.00</td></tr>
+        <tr><td>TX-104</td><td>Performance Optimization</td><td>$2,400.00</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

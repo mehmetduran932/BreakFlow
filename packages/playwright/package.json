@@ -1,0 +1,46 @@
+{
+  "name": "@breakflow/playwright",
+  "version": "0.1.0",
+  "description": "Playwright Chromium PDF adapter with BreakFlow intelligent pagination injection and diagnostics.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --sourcemap --clean",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@breakflow/browser": "workspace:*",
+    "@breakflow/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "playwright": "^1.40.0 || ^1.50.0 || ^1.60.0"
+  },
+  "peerDependenciesMeta": {
+    "playwright": {
+      "optional": false
+    }
+  },
+  "keywords": [
+    "playwright",
+    "pdf",
+    "pagination",
+    "chromium",
+    "print"
+  ],
+  "author": "BreakFlow Contributors",
+  "license": "MIT"
+}

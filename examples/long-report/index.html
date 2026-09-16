@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enterprise Print Architecture Study - Annual Report</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+      line-height: 1.6;
+      background: white;
+    }
+    #report-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .cover-page {
+      height: 940px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 60px;
+      box-sizing: border-box;
+      border-radius: 8px;
+    }
+    .cover-page h1 {
+      font-size: 36px;
+      line-height: 1.2;
+      color: #38bdf8;
+      margin: 0 0 16px 0;
+    }
+    .cover-page p.subtitle {
+      font-size: 18px;
+      color: #94a3b8;
+      margin: 0 0 40px 0;
+    }
+    .meta-box {
+      border-top: 1px solid #334155;
+      padding-top: 25px;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    h2.report-heading {
+      font-size: 22px;
+      color: #0f172a;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 6px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    h3 {
+      font-size: 17px;
+      color: #1e293b;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .figure-card {
+      margin: 25px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      background: #f8fafc;
+    }
+    .svg-canvas {
+      width: 100%;
+      height: 200px;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+    figcaption {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+      font-style: italic;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+      overflow-x: auto;
+    }
+    table.data-grid {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table.data-grid th, table.data-grid td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+    table.data-grid th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div id="report-container">
+    <div class="cover-page" data-breakflow="break-after">
+      <h1>Intelligent Pagination Architecture &amp; Print Reliability Study</h1>
+      <p class="subtitle">An Engineering Treatise on Layout Tree Analysis, Dynamic Heuristic Scoring, and Headless Browser PDF Precision.</p>
+      <div class="meta-box">
+        <strong>BreakFlow Research &amp; Engineering Labs</strong><br>
+        Version: 1.0.0-GA | Date: October 2026<br>
+        Classification: Open Technical Specification
+      </div>
+    </div>
+
+    <h2 class="report-heading" data-breakflow="keep-next">1. Executive Overview &amp; Problem Taxonomy</h2>
+    <p>Generating enterprise-grade PDFs from standard HTML/CSS remains one of the most frustrating bottlenecks in modern software engineering. While modern browsers excel at dynamic screen layouts using Flexbox and Grid, the CSS Paged Media specifications and browser print engines exhibit severe semantic blind spots when converting viewport DOM trees into paginated sheets.</p>
+    <p>Common failures include orphaned section titles isolated at page bottoms, cards dissected between pages, table rows sliced midway, and unpredictable blank pages triggered by naive `break-inside: avoid` properties on tall elements.</p>
+
+    <h2 class="report-heading" data-breakflow="keep-next">2. Benchmark Evaluation &amp; Layout Performance</h2>
+    <p>The table below summarizes latency, memory footprint, and pagination accuracy across 10,000 automated test documents processed through BreakFlow.</p>
+
+    <table class="data-grid" data-breakflow="table">
+      <thead data-breakflow="repeat">
+        <tr>
+          <th>Document Archetype</th>
+          <th>DOM Nodes</th>
+          <th>Measurement Time</th>
+          <th>Planning Duration</th>
+          <th>Regression Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Standard Single-Page Invoice</td><td>62</td><td>14ms</td><td>3ms</td><td>0.00%</td></tr>
+        <tr><td>Multi-Page Curriculum Vitae</td><td>140</td><td>26ms</td><td>5ms</td><td>0.00%</td></tr>
+        <tr><td>Comprehensive Audit Ledger (8 Pages)</td><td>480</td><td>72ms</td><td>12ms</td><td>0.00%</td></tr>
+        <tr><td>Technical Whitepaper (20 Pages)</td><td>1,120</td><td>160ms</td><td>24ms</td><td>0.00%</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="report-heading" data-breakflow="keep-next">3. Algorithmic Pipeline &amp; Scoring Heuristics</h2>
+    <p>BreakFlow executes as an intermediate compiler layer between DOM construction and browser rasterization. The diagram below illustrates the deterministic lifecycle.</p>
+
+    <figure class="figure-card" data-breakflow="keep">
+      <div class="svg-canvas">
+        <svg width="600" height="160" viewBox="0 0 600 160">
+          <rect x="20" y="40" width="100" height="70" rx="6" fill="#3b82f6"/>
+          <text x="70" y="80" fill="white" font-size="13" font-family="sans-serif" text-anchor="middle">1. DOM Clone</text>
+          <path d="M 125 75 L 165 75" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <rect x="170" y="40" width="110" height="70" rx="6" fill="#0284c7"/>
+          <text x="225" y="80" fill="white" font-size="13" font-family="sans-serif" text-anchor="middle">2. Measurement</text>
+          <path d="M 285 75 L 325 75" stroke="#64748b" stroke-width="2"/>
+
+          <rect x="330" y="40" width="110" height="70" rx="6" fill="#0f766e"/>
+          <text x="385" y="80" fill="white" font-size="13" font-family="sans-serif" text-anchor="middle">3. Plan &amp; Score</text>
+          <path d="M 445 75 L 485 75" stroke="#64748b" stroke-width="2"/>
+
+          <rect x="490" y="40" width="100" height="70" rx="6" fill="#16a34a"/>
+          <text x="540" y="80" fill="white" font-size="13" font-family="sans-serif" text-anchor="middle">4. Print DOM</text>
+        </svg>
+      </div>
+      <figcaption>Figure 3.1: BreakFlow four-stage decoupled pagination compilation pipeline.</figcaption>
+    </figure>
+
+    <h2 class="report-heading" data-breakflow="keep-next">4. Declarative API Configuration Example</h2>
+    <p>Integration requires zero modification to host application frameworks (React, Angular, Vue):</p>
+
+    <pre><code>import { createPaginator } from '@breakflow/browser';
+
+const paginator = createPaginator({
+  page: { format: 'A4', margin: '15mm' },
+  smartDefaults: true,
+  table: { repeatHeader: true, preventRowSplit: true }
+});
+
+// Analyze without altering the live DOM
+const analysis = await paginator.analyze('#report-container');
+console.log('Issues found:', analysis.issues);
+
+// Perform intelligent pagination
+const result = await paginator.paginate('#report-container');</code></pre>
+
+    <h2 class="report-heading" data-breakflow="keep-next">5. Conclusion</h2>
+    <p>BreakFlow decouples layout measurement from PDF rasterization, ensuring that printable documents retain component semantics, clean page breaks, and professional typographic hierarchy across headless cloud environments.</p>
+  </div>
+</body>
+</html>

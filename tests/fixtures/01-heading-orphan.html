@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Heading Orphan Test</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+    }
+    .hero {
+      height: 820px;
+      background: #e2e8f0;
+      padding: 20px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      color: #0f172a;
+    }
+    .intro-paragraph {
+      height: 250px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="hero">
+      <h1>Document Introduction</h1>
+      <p>This hero section occupies most of the first page (820px height).</p>
+    </div>
+
+    <!-- Heading fits on Page 1 (leaving tiny space), but intro-paragraph CANNOT fit on Page 1.
+         BreakFlow must move this heading to Page 2 together with its following paragraph! -->
+    <h2 id="experience-title" data-breakflow="keep-next">Professional Experience</h2>
+    <div class="intro-paragraph" id="experience-intro">
+      <p>Overview of senior engineering experience and architectural leadership across distributed systems.</p>
+    </div>
+  </div>
+</body>
+</html>

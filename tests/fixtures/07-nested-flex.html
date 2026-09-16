@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>07 - Nested Flex Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px;
+    }
+    .flex-card {
+      display: flex;
+      flex-direction: row;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 20px;
+      height: 280px;
+      box-sizing: border-box;
+    }
+    .flex-sidebar {
+      width: 150px;
+      background: #e2e8f0;
+      padding: 10px;
+      border-radius: 4px;
+      margin-right: 20px;
+    }
+    .flex-main {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="content" class="flex-container">
+    <h1>Team Organization Directory</h1>
+    <div class="flex-card" id="team-card-1" data-breakflow="keep">
+      <div class="flex-sidebar">Engineering</div>
+      <div class="flex-main">
+        <h3>Core Architecture Team</h3>
+        <p>Responsible for foundational compiler, runtime, and pagination engine systems.</p>
+      </div>
+    </div>
+    <div class="flex-card" id="team-card-2" data-breakflow="keep">
+      <div class="flex-sidebar">Platform</div>
+      <div class="flex-main">
+        <h3>Cloud Infrastructure</h3>
+        <p>Manages multi-region Kubernetes clusters and high-availability storage backends.</p>
+      </div>
+    </div>
+    <div class="flex-card" id="team-card-3" data-breakflow="keep">
+      <div class="flex-sidebar">Security</div>
+      <div class="flex-main">
+        <h3>Application Security</h3>
+        <p>Oversees penetration testing, dependency security, and cryptographic identity.</p>
+      </div>
+    </div>
+    <div class="flex-card" id="team-card-4" data-breakflow="keep">
+      <div class="flex-sidebar">Data</div>
+      <div class="flex-main">
+        <h3>Analytics & ML</h3>
+        <p>Builds predictive models and scalable real-time event streaming pipelines.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

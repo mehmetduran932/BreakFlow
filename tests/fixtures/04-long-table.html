@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Long Multi-Page Table Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px;
+      font-size: 13px;
+    }
+    th {
+      background: #0f172a;
+      color: white;
+      text-align: left;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Itemized Inventory Report</h1>
+    <!-- 45 rows. Spans multiple pages. BreakFlow must repeat <thead> on each continuation page! -->
+    <table id="inventory-table" data-breakflow="table">
+      <thead data-breakflow="repeat">
+        <tr>
+          <th style="width: 15%;">SKU</th>
+          <th style="width: 50%;">Item Name</th>
+          <th style="width: 15%;">Unit Price</th>
+          <th style="width: 20%;">Stock Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SKU-001</td><td>Enterprise Server Rack 42U</td><td>$1,250.00</td><td>4</td></tr>
+        <tr><td>SKU-002</td><td>Gigabit Switch 48-Port PoE+</td><td>$890.00</td><td>12</td></tr>
+        <tr><td>SKU-003</td><td>CAT6a STP Patch Cable 2m</td><td>$9.50</td><td>350</td></tr>
+        <tr><td>SKU-004</td><td>Fiber Optic Transceiver 10G</td><td>$75.00</td><td>40</td></tr>
+        <tr><td>SKU-005</td><td>Uninterruptible Power Supply 3000VA</td><td>$1,450.00</td><td>6</td></tr>
+        <tr><td>SKU-006</td><td>Precision Air Conditioning Unit</td><td>$4,200.00</td><td>2</td></tr>
+        <tr><td>SKU-007</td><td>Environmental Monitor Sensor Hub</td><td>$340.00</td><td>15</td></tr>
+        <tr><td>SKU-008</td><td>Network Attached Storage 12-Bay</td><td>$2,100.00</td><td>5</td></tr>
+        <tr><td>SKU-009</td><td>Enterprise NVMe SSD 3.84TB</td><td>$420.00</td><td>32</td></tr>
+        <tr><td>SKU-010</td><td>Hardware Security Module (HSM)</td><td>$6,500.00</td><td>2</td></tr>
+        <tr><td>SKU-011</td><td>KVM Console Drawer 17-inch</td><td>$780.00</td><td>4</td></tr>
+        <tr><td>SKU-012</td><td>Smart PDU 30A Zero-U</td><td>$520.00</td><td>8</td></tr>
+        <tr><td>SKU-013</td><td>Patch Panel 24-Port Cat6</td><td>$65.00</td><td>25</td></tr>
+        <tr><td>SKU-014</td><td>Cable Management Horizontal 2U</td><td>$35.00</td><td>30</td></tr>
+        <tr><td>SKU-015</td><td>Fire Suppression Clean Agent Tank</td><td>$3,200.00</td><td>3</td></tr>
+        <tr><td>SKU-016</td><td>Biometric Access Control Reader</td><td>$480.00</td><td>8</td></tr>
+        <tr><td>SKU-017</td><td>Surveillance Dome Camera 4K</td><td>$290.00</td><td>16</td></tr>
+        <tr><td>SKU-018</td><td>Core Router Dual-Power</td><td>$7,800.00</td><td>2</td></tr>
+        <tr><td>SKU-019</td><td>Wireless Access Point WiFi 6E</td><td>$380.00</td><td>24</td></tr>
+        <tr><td>SKU-020</td><td>Serial Console Server 16-Port</td><td>$950.00</td><td>3</td></tr>
+        <tr><td>SKU-021</td><td>Rackmount Liquid Cooling Distribution</td><td>$1,850.00</td><td>4</td></tr>
+        <tr><td>SKU-022</td><td>Optical Time Domain Reflectometer</td><td>$3,600.00</td><td>1</td></tr>
+        <tr><td>SKU-023</td><td>Cat6 Cable Reel 305m Low Smoke</td><td>$145.00</td><td>20</td></tr>
+        <tr><td>SKU-024</td><td>Velcro Cable Tie Roll 25m</td><td>$18.00</td><td>50</td></tr>
+        <tr><td>SKU-025</td><td>Cage Nuts and Screws Pack 100</td><td>$28.00</td><td>30</td></tr>
+        <tr><td>SKU-026</td><td>Grounding Kit for Server Rack</td><td>$45.00</td><td>10</td></tr>
+        <tr><td>SKU-027</td><td>Blanking Panel 1U Toolless (10pk)</td><td>$55.00</td><td>15</td></tr>
+        <tr><td>SKU-028</td><td>Automatic Transfer Switch (ATS) 16A</td><td>$640.00</td><td>6</td></tr>
+        <tr><td>SKU-029</td><td>Fiber Patch Panel 24x LC Duplex</td><td>$120.00</td><td>12</td></tr>
+        <tr><td>SKU-030</td><td>Next-Gen Firewall Appliance</td><td>$5,400.00</td><td>2</td></tr>
+        <tr><td>SKU-031</td><td>Bandwidth Shaper and Cache Proxy</td><td>$2,900.00</td><td>2</td></tr>
+        <tr><td>SKU-032</td><td>Remote Power Management Controller</td><td>$310.00</td><td>10</td></tr>
+        <tr><td>SKU-033</td><td>Server Slide Rail Kit Universal</td><td>$95.00</td><td>20</td></tr>
+        <tr><td>SKU-034</td><td>High Density SFP28 DAC Cable 3m</td><td>$48.00</td><td>60</td></tr>
+        <tr><td>SKU-035</td><td>QSFP-DD 400G Transceiver Module</td><td>$980.00</td><td>8</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

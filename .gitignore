@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.turbo/
+test-results/
+playwright-report/
+*.log
+.pnpm-debug.log*
+.DS_Store
+Thumbs.db
+examples/cv/page-1-preview.png
+examples/cv/page-2-preview.png

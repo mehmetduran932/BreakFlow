@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>12 - Forced Page Break Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+    .section {
+      height: 250px;
+      padding: 20px;
+      margin-bottom: 10px;
+      background: #f1f5f9;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="section" id="section-1">
+      <h2>Chapter 1: The Beginning</h2>
+      <p>Introductory chapter text.</p>
+    </div>
+
+    <!-- Explicit forced page break. Must start on a clean fresh page without creating empty blank pages! -->
+    <div class="section" id="section-2" data-breakflow="break-before">
+      <h2>Chapter 2: The Middle</h2>
+      <p>This chapter must start on Page 2.</p>
+    </div>
+
+    <div class="section" id="section-3">
+      <h2>Chapter 3: Further Discussions</h2>
+      <p>Continues normal layout.</p>
+    </div>
+  </div>
+</body>
+</html>

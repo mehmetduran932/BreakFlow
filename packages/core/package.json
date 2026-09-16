@@ -1,0 +1,35 @@
+{
+  "name": "@breakflow/core",
+  "version": "0.1.0",
+  "description": "Framework-independent core pagination engine, layout models, scoring, and diagnostics for BreakFlow.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --sourcemap --clean",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "pagination",
+    "pdf",
+    "print",
+    "page-breaks",
+    "html-to-pdf",
+    "layout"
+  ],
+  "author": "BreakFlow Contributors",
+  "license": "MIT"
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BreakFlow Live Playground</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #sidebar {
+      width: 340px;
+      background: #1e293b;
+      border-right: 1px solid #334155;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+    #sidebar h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #38bdf8;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+    select, input[type="text"] {
+      background: #0f172a;
+      border: 1px solid #475569;
+      color: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    button.btn-primary {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button.btn-primary:hover {
+      background: #1d4ed8;
+    }
+    #preview-panel {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: #334155;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #diagnostics {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #38bdf8;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    /* Sample document inside playground */
+    .sample-card {
+      background: white;
+      color: #1e293b;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      border: 1px solid #cbd5e1;
+    }
+  </style>
+  <script src="../../packages/browser/dist/index.global.js"></script>
+</head>
+<body>
+  <div id="sidebar">
+    <h2>BreakFlow</h2>
+    <p style="font-size: 13px; color: #94a3b8; margin: 0;">Intelligent pagination for HTML &amp; PDF.</p>
+
+    <div class="control-group">
+      <label for="page-format">Page Format</label>
+      <select id="page-format">
+        <option value="A4" selected>A4 (210 × 297 mm)</option>
+        <option value="Letter">Letter (8.5 × 11 in)</option>
+        <option value="Legal">Legal (8.5 × 14 in)</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="page-margin">Page Margin</label>
+      <select id="page-margin">
+        <option value="10mm">10mm</option>
+        <option value="15mm" selected>15mm</option>
+        <option value="20mm">20mm</option>
+        <option value="25mm">25mm</option>
+      </select>
+    </div>
+
+    <label class="toggle-row">
+      <input type="checkbox" id="smart-defaults" checked>
+      <span>Smart Defaults (h1-h6 keep-next, figures keep)</span>
+    </label>
+
+    <label class="toggle-row">
+      <input type="checkbox" id="debug-mode" checked>
+      <span>Visual Debug Overlay</span>
+    </label>
+
+    <button class="btn-primary" id="btn-paginate">Run Pagination</button>
+
+    <label>Live Diagnostics:</label>
+    <div id="diagnostics">Click "Run Pagination" to inspect metrics.</div>
+  </div>
+
+  <div id="preview-panel">
+    <div id="document-to-paginate" style="width: 700px; background: white; color: #1e293b; padding: 25px; box-sizing: border-box; border-radius: 4px;">
+      <h1>Corporate Annual Briefing</h1>
+      <p>This interactive playground demonstrates BreakFlow running entirely in the client browser.</p>
+
+      <div class="sample-card" data-breakflow="keep">
+        <h3>Section 1: Infrastructure Overview</h3>
+        <p>This block has <code>data-breakflow="keep"</code> attached. BreakFlow will ensure it is never cut across page boundaries.</p>
+      </div>
+
+      <div class="sample-card" style="height: 380px;">
+        <h3>Section 2: High Density Workloads</h3>
+        <p>Simulating substantial content height occupying 380 pixels.</p>
+        <ul>
+          <li>Real-time telemetry streams</li>
+          <li>SIMD vectorized graphics</li>
+          <li>Headless browser print queues</li>
+        </ul>
+      </div>
+
+      <h2 data-breakflow="keep-next">Section 3: Financial Growth Projections</h2>
+      <div class="sample-card">
+        <p>This heading is marked with <code>keep-next</code>. If this card cannot fit on the current page, the heading automatically moves with it to avoid becoming an orphan.</p>
+      </div>
+
+      <div class="sample-card" data-breakflow="keep">
+        <h3>Section 4: Concluding Roadmap</h3>
+        <p>Autonomous AI agents and intelligent document layout engines.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn-paginate');
+    const diag = document.getElementById('diagnostics');
+
+    async function runPlayground() {
+      const format = document.getElementById('page-format').value;
+      const margin = document.getElementById('page-margin').value;
+      const smartDefaults = document.getElementById('smart-defaults').checked;
+      const debug = document.getElementById('debug-mode').checked;
+
+      const paginator = window.BreakFlow.createPaginator({
+        page: { format, margin },
+        smartDefaults,
+        debug
+      });
+
+      const res = await paginator.paginate('#document-to-paginate', {
+        replaceOriginal: false,
+        injectStyles: true
+      });
+
+      diag.innerHTML = `
+<b>Pages:</b> ${res.pageCount}<br>
+<b>Total Time:</b> ${Math.round(res.metrics.totalMs)}ms<br>
+<b>Measurement:</b> ${Math.round(res.metrics.measurementMs)}ms<br>
+<b>Planning:</b> ${Math.round(res.metrics.planningMs)}ms<br>
+<b>Issues:</b> ${res.issues.length}<br>
+<b>Fixes:</b> ${res.fixes.length}
+      `;
+
+      const previewPanel = document.getElementById('preview-panel');
+      const existing = previewPanel.querySelector('.breakflow-paginated-root');
+      if (existing) existing.remove();
+      previewPanel.appendChild(res.element);
+    }
+
+    btn.addEventListener('click', runPlayground);
+    window.addEventListener('DOMContentLoaded', runPlayground);
+  </script>
+</body>
+</html>

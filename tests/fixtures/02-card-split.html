@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Card Split Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .spacer {
+      height: 700px;
+      background: #f1f5f9;
+      margin-bottom: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .card {
+      height: 380px;
+      background: white;
+      border: 1px solid #94a3b8;
+      border-radius: 8px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="spacer">
+      <h1>Dashboard Section</h1>
+      <p>Content filling 700px on Page 1.</p>
+    </div>
+
+    <!-- 380px card marked keepTogether. Cannot fit on Page 1 remaining space.
+         BreakFlow must move this entire card intact to Page 2! -->
+    <div class="card" id="project-card" data-breakflow="keep">
+      <h2>Project Deliverables</h2>
+      <p>Detailed breakdown of engineering deliverables, test plans, and release criteria.</p>
+      <ul>
+        <li>Specification Complete</li>
+        <li>Implementation Ready</li>
+        <li>Browser Automation Tests Passing</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

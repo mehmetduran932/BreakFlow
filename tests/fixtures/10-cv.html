@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10 - Professional Curriculum Vitae</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    .cv-header {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    .cv-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 5px 0;
+    }
+    .cv-title {
+      font-size: 18px;
+      color: #2563eb;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+    }
+    .cv-contact {
+      font-size: 13px;
+      color: #64748b;
+      display: flex;
+      gap: 20px;
+    }
+    h2.section-header {
+      font-size: 20px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 6px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      color: #0f172a;
+    }
+    .job-card {
+      background: #f8fafc;
+      border-left: 3px solid #2563eb;
+      padding: 15px 20px;
+      margin-bottom: 18px;
+      border-radius: 0 6px 6px 0;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    .job-role {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0f172a;
+    }
+    .job-company {
+      color: #475569;
+      font-weight: 500;
+    }
+    .job-dates {
+      font-size: 13px;
+      color: #64748b;
+    }
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      font-size: 14px;
+      color: #334155;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .skill-category {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 6px;
+    }
+    .skill-category h4 {
+      margin: 0 0 6px 0;
+      font-size: 14px;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <div id="cv">
+    <div class="cv-header" data-breakflow="keep">
+      <h1 class="cv-name">Elena Rostova, M.Sc.</h1>
+      <div class="cv-title">Principal Systems Architect &amp; Performance Engineer</div>
+      <div class="cv-contact">
+        <span>elena.rostova@example.com</span>
+        <span>+1 (555) 439-0192</span>
+        <span>github.com/erostova</span>
+        <span>Seattle, WA</span>
+      </div>
+    </div>
+
+    <div class="summary-section" data-breakflow="keep">
+      <h2 class="section-header" data-breakflow="keep-next">Executive Summary</h2>
+      <p>Results-driven software architect with 14+ years of experience designing high-throughput distributed systems, modern browser rendering engines, and developer tooling. Proven track record leading multi-disciplinary teams across Fortune 500 enterprises and hyper-growth scale-ups.</p>
+    </div>
+
+    <h2 class="section-header" data-breakflow="keep-next">Professional Experience</h2>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div>
+          <span class="job-role">Principal Systems Architect</span> — <span class="job-company">Vanguard Technologies</span>
+        </div>
+        <span class="job-dates">2022 – Present</span>
+      </div>
+      <ul>
+        <li>Architected global distributed document processing engine serving over 40 million monthly PDF exports.</li>
+        <li>Decreased end-to-end rendering latency by 64% by designing zero-copy memory buffers and SIMD-accelerated text layout.</li>
+        <li>Mentored 18 staff and senior engineers across three international timezones.</li>
+      </ul>
+    </div>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div>
+          <span class="job-role">Staff Browser Platform Engineer</span> — <span class="job-company">Chromium Cloud Labs</span>
+        </div>
+        <span class="job-dates">2018 – 2022</span>
+      </div>
+      <ul>
+        <li>Spearheaded headless browser containerization with sub-100ms cold starts on Kubernetes.</li>
+        <li>Authored critical layout refactorings eliminating memory fragmentation under concurrent headless sessions.</li>
+        <li>Maintained 99.995% service availability across 12 worldwide edge nodes.</li>
+      </ul>
+    </div>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div>
+          <span class="job-role">Senior Full-Stack Engineer</span> — <span class="job-company">DataStream Analytics</span>
+        </div>
+        <span class="job-dates">2014 – 2018</span>
+      </div>
+      <ul>
+        <li>Engineered real-time financial reporting visualization engine handling 500,000 events/sec.</li>
+        <li>Designed automated PDF generation pipelines producing multi-hundred-page compliant regulatory audits.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-header" data-breakflow="keep-next">Technical Proficiencies</h2>
+    <div class="skills-grid" data-breakflow="keep">
+      <div class="skill-category">
+        <h4>Core Languages</h4>
+        <p>TypeScript, Rust, C++, Go, Python</p>
+      </div>
+      <div class="skill-category">
+        <h4>Browser &amp; Rendering</h4>
+        <p>Chromium Internals, CSS Paged Media, WebGL, Skia, Playwright</p>
+      </div>
+      <div class="skill-category">
+        <h4>Cloud &amp; Infrastructure</h4>
+        <p>Kubernetes, Docker, AWS, GCP, Terraform</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

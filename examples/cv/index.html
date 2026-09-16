@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elena Rostova - Curriculum Vitae</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      line-height: 1.5;
+    }
+    #cv-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    .cv-header {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    .cv-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 4px 0;
+    }
+    .cv-title {
+      font-size: 17px;
+      color: #2563eb;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+    }
+    .cv-contact {
+      font-size: 13px;
+      color: #64748b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    h2.section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 6px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    .job-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #2563eb;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      border-radius: 0 6px 6px 0;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .job-role {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0f172a;
+    }
+    .job-company {
+      color: #475569;
+      font-weight: 500;
+    }
+    .job-dates {
+      font-size: 13px;
+      color: #64748b;
+    }
+    ul.job-bullets {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      font-size: 13.5px;
+      color: #334155;
+    }
+    ul.job-bullets li {
+      margin-bottom: 5px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .skill-card {
+      background: #f1f5f9;
+      padding: 12px 14px;
+      border-radius: 6px;
+    }
+    .skill-card h4 {
+      margin: 0 0 6px 0;
+      font-size: 14px;
+      color: #0f172a;
+    }
+    .skill-card p {
+      margin: 0;
+      font-size: 12.5px;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+  <div id="cv-container">
+    <div class="cv-header" data-breakflow="keep">
+      <h1 class="cv-name">Elena Rostova, M.Sc.</h1>
+      <div class="cv-title">Principal Distributed Systems Architect &amp; Performance Engineer</div>
+      <div class="cv-contact">
+        <span>📍 Seattle, WA</span>
+        <span>✉️ elena.rostova@example.com</span>
+        <span>📞 +1 (555) 439-0192</span>
+        <span>🌐 github.com/erostova</span>
+      </div>
+    </div>
+
+    <div class="summary-card" data-breakflow="keep">
+      <h2 class="section-title" data-breakflow="keep-next">Executive Summary</h2>
+      <p style="font-size: 14px; line-height: 1.6; color: #334155;">
+        Distinguished software architect with 14+ years of leadership in high-throughput browser rendering platforms, zero-copy distributed serialization pipelines, and enterprise developer tools. Specializes in browser layout internals, performance auditing, and headless Chromium print automation.
+      </p>
+    </div>
+
+    <h2 class="section-title" data-breakflow="keep-next">Professional Experience</h2>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div><span class="job-role">Principal Systems Architect</span> — <span class="job-company">Vanguard Technologies</span></div>
+        <span class="job-dates">2022 – Present</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Spearheaded modernization of global document synthesis cluster processing over 45M monthly PDF exports.</li>
+        <li>Implemented SIMD-accelerated text layout measurement and CSS paged media normalization.</li>
+        <li>Eliminated cross-page element slicing through automated pre-print DOM pagination algorithms.</li>
+      </ul>
+    </div>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div><span class="job-role">Staff Browser Platform Engineer</span> — <span class="job-company">Chromium Cloud Labs</span></div>
+        <span class="job-dates">2018 – 2022</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Engineered low-latency headless browser worker pool maintaining sub-80ms invocation times.</li>
+        <li>Fixed critical layout thrashing patterns across large multi-table DOM trees in print media mode.</li>
+        <li>Authored developer documentation and CI linting suites for printable web applications.</li>
+      </ul>
+    </div>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div><span class="job-role">Senior Full-Stack Engineer</span> — <span class="job-company">DataStream Analytics</span></div>
+        <span class="job-dates">2014 – 2018</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Designed real-time transactional reporting dashboards with seamless PDF export capabilities.</li>
+        <li>Constructed resilient table pagination components featuring automatically repeated headers.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title" data-breakflow="keep-next">Key Technical Projects</h2>
+
+    <div class="job-card" data-breakflow="keep">
+      <div class="job-header">
+        <div><span class="job-role">Project Lead &amp; Designer</span> — <span class="job-company">BreakFlow Core</span></div>
+        <span class="job-dates">Open Source (2026)</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Created a renderer-agnostic pagination engine that analyzes HTML and fixes page breaks prior to PDF generation.</li>
+        <li>Developed greedy scoring heuristic with penalty configuration and isolated iframe measurement sandbox.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title" data-breakflow="keep-next">Technical Proficiencies</h2>
+    <div class="skills-grid" data-breakflow="keep">
+      <div class="skill-card">
+        <h4>Core Languages</h4>
+        <p>TypeScript, Rust, C++, Go, Python</p>
+      </div>
+      <div class="skill-card">
+        <h4>Browser &amp; Rendering</h4>
+        <p>Chromium Internals, CSS Paged Media, Skia, Playwright, Vitest</p>
+      </div>
+      <div class="skill-card">
+        <h4>Cloud &amp; DevOps</h4>
+        <p>Kubernetes, Docker, AWS, GCP, GitHub Actions, Terraform</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
