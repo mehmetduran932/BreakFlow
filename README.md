@@ -3,6 +3,12 @@
 > **Intelligent pagination for HTML and PDF.**  
 > *Fix broken page breaks before they reach your PDF.*
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel%20App-000000?style=for-the-badge&logo=vercel)](https://temporary-fast-argon-5v5qgvo.vercel.app/)
+[![NPM Version](https://img.shields.io/npm/v/%40breakflow%2Fcore?style=for-the-badge&color=CB3837&logo=npm)](https://www.npmjs.com/package/@breakflow/core)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+
+🚀 **[Try the Live Interactive Demo](https://temporary-fast-argon-5v5qgvo.vercel.app/)** *(Angular 22 + Signals + client-side jsPDF showcase)*
+
 BreakFlow is a renderer-agnostic pagination engine that analyzes printable HTML, finds bad page breaks, and applies better pagination before the document reaches Chromium or another PDF renderer.
 
 Think **ESLint for printable HTML**, combined with a **smart pagination engine**.
